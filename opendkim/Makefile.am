@@ -26,7 +26,7 @@ opendkim_SOURCES = opendkim.c opendkim.h opendkim-ar.c opendkim-ar.h opendkim-ar
 opendkim_CC = $(PTHREAD_CC)
 opendkim_CFLAGS = $(PTHREAD_CFLAGS) $(LIBCRYPTO_CFLAGS) $(COV_CFLAGS)
 opendkim_CPPFLAGS = -I$(srcdir)/../libopendkim $(LIBCRYPTO_CPPFLAGS)
-opendkim_LDFLAGS = $(LIBCRYPTO_LIBDIRS) $(LIBMILTER_LIBDIRS) $(PTHREAD_CFLAGS) $(COV_LDFLAGS)
+opendkim_LDFLAGS = $(LIBCRYPTO_LIBDIRS) $(PTHREAD_CFLAGS) $(COV_LDFLAGS)
 opendkim_LDADD = ../libopendkim/libopendkim.la $(LIBMILTER_LIBS) $(LIBCRYPTO_LIBS) $(PTHREAD_LIBS) $(COV_LIBADD) $(LIBRESOLV)
 if USE_DB_OPENDKIM
 opendkim_CPPFLAGS += $(LIBDB_INCDIRS)
@@ -88,7 +88,6 @@ opendkim_CPPFLAGS += -I$(srcdir)/../reprrd
 opendkim_LDADD += ../reprrd/libreprrd.la
 endif
 
-opendkim_CPPFLAGS += $(LIBMILTER_INCDIRS)
 endif
 
 if STATS
@@ -108,7 +107,7 @@ opendkim_testkey_CFLAGS = $(LIBCRYPTO_CFLAGS) $(COV_CFLAGS) $(PTHREAD_CFLAGS)
 opendkim_testkey_LDFLAGS = $(LIBCRYPTO_LIBDIRS) $(COV_LDFLAGS) $(PTHREAD_CFLAGS)
 opendkim_testkey_LDADD = ../libopendkim/libopendkim.la $(LIBCRYPTO_LIBS) $(LIBRESOLV) $(COV_LIBADD) $(PTHREAD_LIBS)
 if LUA
-opendkim_testkey_CPPFLAGS += $(LIBLUA_INCDIRS) $(LIBMILTER_INCDIRS)
+opendkim_testkey_CPPFLAGS += $(LIBLUA_INCDIRS)
 opendkim_testkey_LDFLAGS += $(LIBLUA_LIBDIRS)
 opendkim_testkey_LDADD += $(LIBLUA_LIBS)
 endif
@@ -200,7 +199,7 @@ opendkim_genzone_CPPFLAGS += $(OPENLDAP_CPPFLAGS)
 opendkim_genzone_LDADD += $(OPENLDAP_LIBS)
 endif
 if LUA
-opendkim_genzone_CPPFLAGS += $(LIBLUA_INCDIRS) $(LIBMILTER_INCDIRS)
+opendkim_genzone_CPPFLAGS += $(LIBLUA_INCDIRS)
 opendkim_genzone_LDFLAGS += $(LIBLUA_LIBDIRS)
 opendkim_genzone_LDADD += $(LIBLUA_LIBS)
 endif
@@ -250,7 +249,7 @@ opendkim_atpszone_CPPFLAGS += $(OPENLDAP_CPPFLAGS)
 opendkim_atpszone_LDADD += $(OPENLDAP_LIBS)
 endif
 if LUA
-opendkim_atpszone_CPPFLAGS += $(LIBLUA_INCDIRS) $(LIBMILTER_INCDIRS)
+opendkim_atpszone_CPPFLAGS += $(LIBLUA_INCDIRS)
 opendkim_atpszone_LDFLAGS += $(LIBLUA_LIBDIRS)
 opendkim_atpszone_LDADD += $(LIBLUA_LIBS)
 endif
